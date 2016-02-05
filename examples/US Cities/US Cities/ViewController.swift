@@ -26,7 +26,7 @@ class CityCell: UICollectionViewCell {
     }
 }
 
-class CitiesDatasource: NSObject, DatasourceProviderType {
+struct CitiesDatasource: DatasourceProviderType {
     typealias Factory = YapDBFactory<City, CityCell, UICollectionViewCell, UICollectionView>
     typealias Datasource = YapDBDatasource<Factory>
 
