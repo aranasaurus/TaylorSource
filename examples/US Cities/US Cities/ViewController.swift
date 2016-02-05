@@ -11,28 +11,23 @@ import YapDatabase
 import YapDatabaseExtensions
 import TaylorSource
 
-class CityCell: UITableViewCell {
-
-    override required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: UITableViewCellStyle.Value1, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class CityCell: UICollectionViewCell {
+    
+    @IBOutlet weak var cityLabel: UILabel?
+    @IBOutlet weak var populationLabel: UILabel?
 
     class func configuration(formatter: NSNumberFormatter) -> CitiesDatasource.Datasource.FactoryType.CellConfiguration {
         return { (cell, city, index) in
-            cell.textLabel!.font = UIFont.preferredFontForTextStyle(city.capital ? UIFontTextStyleHeadline : UIFontTextStyleBody)
-            cell.textLabel!.text = city.name
-            cell.detailTextLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-            cell.detailTextLabel!.text = formatter.stringFromNumber(NSNumber(integer: city.population))
+            cell.cityLabel?.font = UIFont.preferredFontForTextStyle(city.capital ? UIFontTextStyleHeadline : UIFontTextStyleBody)
+            cell.cityLabel?.text = city.name
+            cell.populationLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            cell.populationLabel?.text = formatter.stringFromNumber(NSNumber(integer: city.population))
         }
     }
 }
 
-struct CitiesDatasource: DatasourceProviderType {
-    typealias Factory = YapDBFactory<City, CityCell, UITableViewHeaderFooterView, UITableView>
+class CitiesDatasource: NSObject, DatasourceProviderType {
+    typealias Factory = YapDBFactory<City, CityCell, UICollectionViewCell, UICollectionView>
     typealias Datasource = YapDBDatasource<Factory>
 
     let readWriteConnection: YapDatabaseConnection
@@ -51,8 +46,8 @@ struct CitiesDatasource: DatasourceProviderType {
 
         datasource = Datasource(id: "cities datasource", database: db, factory: Factory(), processChanges: view.processChanges, configuration: City.cities(abovePopulationThreshold: threshold))
 
-        datasource.factory.registerCell(.ClassWithIdentifier(CityCell.self, "cell"), inView: view, configuration: CityCell.configuration(formatter))
-        datasource.factory.registerHeaderText { index in
+        datasource.factory.registerCell(.NibWithIdentifier(UINib(nibName: "CityCell", bundle: nil), "cell"), inView: view, configuration: CityCell.configuration(formatter))
+        datasource.factory.registerTextWithKind(.Header) { index in
             if let state: State = index.transaction.readByKey(index.group) {
                 return state.name
             }
@@ -68,24 +63,27 @@ struct CitiesDatasource: DatasourceProviderType {
     }
 }
 
-class ViewController: UITableViewController {
+class ViewController: UICollectionViewController {
 
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet var tableViewHeader: UIView!
 
     lazy var data = USStatesAndCities()
-    var wrapper: TableViewDataSourceProvider<CitiesDatasource>!
+    var wrapper: CollectionViewDataSourceProvider<CitiesDatasource>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("Some US Cities & States", comment: "Some US Cities & States")
-        configureDatasource()
+        
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: collectionView!.frame.width - 100, height: 56)
+        
+        let datasource = CitiesDatasource(db: database, view: collectionView!, threshold: 20_000)
+        configureDatasource(datasource)
     }
 
-    func configureDatasource() {
-        wrapper = TableViewDataSourceProvider(CitiesDatasource(db: database, view: tableView, threshold: 20_000))
-        tableView.dataSource = wrapper.tableViewDataSource
-        tableView.tableHeaderView = tableViewHeader
+    func configureDatasource(datasource: CitiesDatasource) {
+        wrapper = CollectionViewDataSourceProvider(datasource)
+        collectionView?.dataSource = wrapper.collectionViewDataSource
         data.loadIntoDatabase(database)
     }
 }

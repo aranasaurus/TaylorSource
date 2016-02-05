@@ -16,6 +16,7 @@
 		65E52D481AFFB67F007E5946 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E52D471AFFB67F007E5946 /* Domain.swift */; };
 		65E52D4A1AFFC6BE007E5946 /* USStatesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65E52D491AFFC6BE007E5946 /* USStatesAndCities.plist */; };
 		805808D5EC9DAAC48619D70E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFA9748121D0EE2BC9E39D1 /* Pods.framework */; };
+		9466BE281C641E6000EDDC08 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466BE271C641E6000EDDC08 /* CityCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		65E52D3D1AFFB531007E5946 /* US_CitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = US_CitiesTests.swift; sourceTree = "<group>"; };
 		65E52D471AFFB67F007E5946 /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		65E52D491AFFC6BE007E5946 /* USStatesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USStatesAndCities.plist; sourceTree = SOURCE_ROOT; };
+		9466BE271C641E6000EDDC08 /* CityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		AF52D28AFC8288512186DC33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B903E233427E9C57A60DCC85 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EDFA9748121D0EE2BC9E39D1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				65E52D301AFFB531007E5946 /* LaunchScreen.xib */,
 				65E52D2B1AFFB531007E5946 /* Main.storyboard */,
 				65E52D251AFFB531007E5946 /* Supporting Files */,
+				9466BE271C641E6000EDDC08 /* CityCell.xib */,
 			);
 			path = "US Cities";
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E52D2D1AFFB531007E5946 /* Main.storyboard in Resources */,
+				9466BE281C641E6000EDDC08 /* CityCell.xib in Resources */,
 				65E52D4A1AFFC6BE007E5946 /* USStatesAndCities.plist in Resources */,
 				65E52D321AFFB531007E5946 /* LaunchScreen.xib in Resources */,
 				65E52D2F1AFFB531007E5946 /* Images.xcassets in Resources */,

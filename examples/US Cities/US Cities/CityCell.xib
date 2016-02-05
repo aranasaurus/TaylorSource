@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CityCell" customModule="US_Cities" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="277" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdd-gR-yVU">
+                    <rect key="frame" x="8" y="15" width="131" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTU-6O-Be5" userLabel="Population">
+                    <rect key="frame" x="126" y="15" width="131" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TTU-6O-Be5" firstAttribute="baseline" secondItem="Xdd-gR-yVU" secondAttribute="baseline" id="30d-rg-r5c"/>
+                <constraint firstAttribute="trailing" secondItem="TTU-6O-Be5" secondAttribute="trailing" constant="20" id="Ggk-Vj-Fkv"/>
+                <constraint firstItem="Xdd-gR-yVU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JG3-bL-9yq"/>
+                <constraint firstItem="Xdd-gR-yVU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="RRM-Eh-wAe"/>
+                <constraint firstItem="TTU-6O-Be5" firstAttribute="width" secondItem="Xdd-gR-yVU" secondAttribute="width" id="cCP-Wm-GCp"/>
+                <constraint firstItem="Xdd-gR-yVU" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-8" id="gUt-qh-Noe"/>
+                <constraint firstItem="TTU-6O-Be5" firstAttribute="height" secondItem="Xdd-gR-yVU" secondAttribute="height" id="wbT-Ka-AiE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cityLabel" destination="Xdd-gR-yVU" id="Qac-nD-6zt"/>
+                <outlet property="populationLabel" destination="TTU-6O-Be5" id="JCh-mW-aq7"/>
+            </connections>
+            <point key="canvasLocation" x="438.5" y="334"/>
+        </view>
+    </objects>
+</document>
