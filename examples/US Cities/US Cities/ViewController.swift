@@ -79,6 +79,11 @@ class ViewController: UICollectionViewController {
         
         let datasource = CitiesDatasource(db: database, view: collectionView!, threshold: 20_000)
         configureDatasource(datasource)
+        
+        let oregon = State(name: "Oregon")
+        datasource.addCity(City.init(name: "Milwaukie", population: 20_512, capital: false, stateId: "Oregon"), toState: oregon)
+//        datasource.addCity(City.init(name: "Portland", population: 603_106, capital: false, stateId: "Oregon"), toState: oregon)
+//        datasource.addCity(City.init(name: "Salem", population: 154_637, capital: true, stateId: "Oregon"), toState: oregon)
     }
 
     func configureDatasource(datasource: CitiesDatasource) {
