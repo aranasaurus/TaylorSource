@@ -139,8 +139,7 @@ extension UICollectionView: UpdatableView {
             case .Insert:
                 insertItemsAtIndexPaths([change.newIndexPath])
             case .Move:
-                deleteItemsAtIndexPaths([change.indexPath])
-                insertItemsAtIndexPaths([change.newIndexPath])
+                moveItemAtIndexPath(change.indexPath, toIndexPath: change.newIndexPath)
             case .Update:
                 reloadItemsAtIndexPaths([change.indexPath])
             }
